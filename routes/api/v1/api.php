@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Question;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,7 @@ Route::prefix('/user')->group(function (){
     Route::post('/login','api\v1\LoginController@login');
     Route::middleware('auth:api')->get('/all', 'api\v1\user\UserController@index');
 });
+
+Route::apiResource('/question','QuestionController');
+
+Route::apiResource('/questionnaire','QuestionnaireController');
