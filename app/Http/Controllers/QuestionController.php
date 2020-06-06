@@ -32,30 +32,32 @@ class QuestionController extends Controller
      * @param Request $request
      * @return QuestionResource
      */
-    /*public function store(Request $request)
+    public function store(Request $request)
     {
         $request ->validate([
             'ask' => 'required',
+            'answer1' => 'required',
+            'answer2' => 'required',
         ]);
 
         $question = Question::create($request->all());
         return new QuestionResource($question);
-    }*/
+    }
 
     /**
      * @param Questionnaire $questionnaire
      * @return QuestionnaireResource
      */
-    public function store(Questionnaire $questionnaire)
-    {
-        $data = request()->validate([
-            'question' => 'required',
-            'answers' => 'required'
-        ]);
-
-        $question = $questionnaire->questions()->create($data['questions']);
-        $question->answers()->createMany($data['answers']);
-
-        return new QuestionnaireResource($questionnaire);
-    }
+//    public function store(Questionnaire $questionnaire)
+//    {
+//        $data = request()->validate([
+//            'question' => 'required',
+//            'answers' => 'required'
+//        ]);
+//
+//        $question = $questionnaire->questions()->create($data['questions']);
+//        $question->answers()->createMany($data['answers']);
+//
+//        return new QuestionnaireResource($questionnaire);
+//    }
 }

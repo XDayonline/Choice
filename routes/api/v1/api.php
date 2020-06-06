@@ -28,3 +28,5 @@ Route::prefix('/user')->group(function (){
 Route::apiResource('/question','QuestionController');
 
 Route::apiResource('/questionnaire','QuestionnaireController');
+
+Route::apiResource('/answer','AnswerController');

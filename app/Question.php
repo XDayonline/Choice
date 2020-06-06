@@ -9,8 +9,9 @@ class Question extends Model
     protected $guarded = [];
 
     protected $fillable = [
-      'ask',
+        'id', 'ask', 'answer1', 'answer2'
     ];
+
     public function questionnaire()
     {
         return $this->belongsTo(Questionnaire::class);

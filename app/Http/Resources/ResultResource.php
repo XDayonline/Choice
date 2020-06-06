@@ -2,10 +2,9 @@
 
 namespace App\Http\Resources;
 
-use App\Question;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class QuestionResource extends JsonResource
+class ResultResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,9 +15,5 @@ class QuestionResource extends JsonResource
     public function toArray($request)
     {
         return parent::toArray($request);
-//        return [
-//            'id' => $this->id,
-//            'ask' => $this->ask,
-//        ];
     }
 }
