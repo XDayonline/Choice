@@ -2,7 +2,7 @@
 
 
 <p align="center">
-<a style="justify-content: center" href="https://uploads.codesandbox.io/uploads/user/992079af-4d21-44ac-8853-43908c0d9b78/LjHi-help.png" title="ArtG" alt="ArtG"></a>
+<a style="justify-content: center" href="http://choicegianni.herokuapp.com/"><img src="https://img.icons8.com/plasticine/2x/survey.png" title="Choice" alt="Choice"></a>
 </p>
 <p align="center">
 <a href="https://artgback.herokuapp.com/"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
