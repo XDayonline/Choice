@@ -2,7 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Question;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +25,6 @@ Route::prefix('/user')->group(function (){
 });
 
 Route::apiResource('/question','QuestionController');
-
 Route::apiResource('/questionnaire','QuestionnaireController');
-
 Route::apiResource('/answer','AnswerController');
+Route::apiResource('/result','ResultController');

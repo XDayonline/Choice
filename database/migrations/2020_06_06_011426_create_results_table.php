@@ -15,6 +15,12 @@ class CreateResultsTable extends Migration
     {
         Schema::create('results', function (Blueprint $table) {
             $table->id();
+            $table->string('question_id');
+            $table->string('nb_of_answer1');
+            $table->string('nb_of_answer2');
+            $table->string('$percentage_of_answer1');
+            $table->string('$percentage_of_answer2');
+            $table->string('total_answers');
             $table->timestamps();
         });
     }
