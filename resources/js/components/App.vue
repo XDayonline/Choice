@@ -1,14 +1,19 @@
-<!--
 <template>
     <div id="app">
         <Tinder ref="tinder" key-name="id" :queue.sync="queue" :offset-y="10" @submit="onSubmit">
             <template slot-scope="scope">
                 <div
-                    class="pic"
+                    class="pic question"
                     :style="{
             'background-image': `url(https://cn.bing.com//th?id=OHR.${scope.data.id}_UHD.jpg&pid=hp&w=720&h=1280&rs=1&c=4&r=0)`
           }"
                 >
+                    <div>Tu préfères sortir avec</div>
+<!--                    <div>{{questions}}</div>-->
+                    <div class="answer">
+                        <div class="answer1">une fille</div>
+                        <div class="answer2">un garçon</div>
+                    </div>
                 </div>
             </template>
             <img class="like-pointer" slot="like"
@@ -132,6 +137,33 @@
         background-position: center;
     }
 
+    .question {
+        font-size: 3em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-align: center;
+        color: white;
+        text-shadow: black 0.1em 0.1em 0.2em;
+    }
+
+    .answer{
+        display: flex;
+        justify-content: space-evenly;
+        width: inherit;
+        font-size: 30px;
+        font-weight: 600;
+    }
+
+    .answer1{
+        color:#fff700;
+    }
+
+    .answer2{
+        color:black;
+    }
+
     .btns {
         position: absolute;
         left: 0;
@@ -166,4 +198,3 @@
         margin-right: 0;
     }
 </style>
--->

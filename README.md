@@ -49,7 +49,7 @@ This will install all Composer dependencies, create the database structure and p
 
 You can access to the app by http://127.0.0.1:8000/ .
 
-##API
+## API
 
 Here are the routes to have the data from my API :
 

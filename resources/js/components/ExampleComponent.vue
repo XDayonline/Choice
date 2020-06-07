@@ -3,10 +3,33 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Example Component</div>
+                    <div class="card-header">Question</div>
 
                     <div class="card-body">
-                        I'm an example component.
+                        <!--                        <Vue2InteractDraggable-->
+                        <!--                            @draggedRight="draggedRight"-->
+                        <!--                            :interact-max-rotation="15"-->
+                        <!--                            :interact-out-of-sight-x-coordinate="500"-->
+                        <!--                            :interact-x-threshold="200"-->
+                        <!--                        >-->
+                        <!--                            <div>-->
+                        <!--                                <h3>Drag me!</h3>-->
+                        <!--                            </div>-->
+                        <!--                        </Vue2InteractDraggable>-->
+
+                        <vue-swing
+                            @throwout="throwout"
+                            @throwin="throwin"
+                            :config="config"
+                        >
+                            <div class="box">JETTE MOI !!</div>
+                        </vue-swing>
+                        <ul>
+                            <li v-for="question in questions.data" :key="question.id">
+                                Question : {{ question.ask }}
+                                Réponses : {{ question.answer1 }} ou {{ question.answer2 }}
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -15,9 +38,22 @@
 </template>
 
 <script>
+    import GameCardsStack from "./GameCardsStack";
     export default {
+        name: "ExampleComponent",
+        components: {
+            GameCardsStack
+        },
+        data() {
+            return {
+                visibleCards: ["Test", "Vue.js", "Webpack"]
+            };
+        },
         mounted() {
-            console.log('Component mounted.')
+            console.log('ExampleComponent mounted.')
+        },
+        props: {
+            questions: Object
         }
     }
 </script>
