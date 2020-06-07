@@ -1,79 +1,111 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+# Choice
+
 
 <p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
+<a style="justify-content: center" href="https://uploads.codesandbox.io/uploads/user/992079af-4d21-44ac-8853-43908c0d9b78/LjHi-help.png" title="ArtG" alt="ArtG"></a>
+</p>
+<p align="center">
+<a href="https://artgback.herokuapp.com/"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
+<a href="https://artgback.herokuapp.com/"><img src="https://img.shields.io/badge/stable-v1-blue" alt="Latest Stable Version"></a>
+<a href="https://artgback.herokuapp.com/"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-## About Laravel
+ArtG is a survey app built with Laravel.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Getting Started
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Prerequisites
 
-## Learning Laravel
+The ArtG Back website requires a server with PHP 7.2.5+.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+The database engine that is used to store data for this application could be any of the engines supported by Laravel: MySQL, Postgres, SQLite and SQL Server.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+You have to install Composer
 
-## Laravel Sponsors
+Download Laravel using Composer:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+```
+composer global require laravel/installer
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
-- [云软科技](http://www.yunruan.ltd/)
+### Installing
 
-## Contributing
+First of all, Git Clone this project
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+cd into the directory of this project and run the following commands:
+```
+composer install
+```
+Configure the database settings in `app/config/database.php`
+And migrate the database with:
+```
+php artisan migrate
+php artisan db:seed
+php artisan serve
+```
+This will install all Composer dependencies, create the database structure and populate the database with some sample data so that you could see this project in action.
 
-## Code of Conduct
+You can access to the app by http://127.0.0.1:8000/ .
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+##API
 
-## Security Vulnerabilities
+Here are the routes to have the data from my API :
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+* GET QUESTIONS (Avoir toutes les questions) :
+http://choicegianni.herokuapp.com/api/v1/question
+
+* GET QUESTION BY ID (Avoir une question avec l'id) :
+http://choicegianni.herokuapp.com/api/v1/question/(id)
+
+* POST QUESTION (Ajouter une question) :
+http://choicegianni.herokuapp.com/api/v1/question
+
+* GET ANSWERS (Avoir toutes les réponses:
+http://choicegianni.herokuapp.com/api/v1/answer
+
+* GET ANSWER BY ID (Avoir une réponse avec l'id) :
+http://choicegianni.herokuapp.com/api/v1/answer/(id)
+
+* POST ANSWER (Ajouter une réponse) :
+http://choicegianni.herokuapp.com/api/v1/answer
+
+* POST RESULT (Avoir les résultats d'une question en rentrant "question_id" dans le formulaire) :
+http://choicegianni.herokuapp.com/api/v1/answer/result
+
+## Deployment
+
+I used [Heroku](https://www.heroku.com/) to deploy our project.
+
+## Demo
+
+You can access to my web site to http://choicegianni.herokuapp.com/ .
+
+## Built With
+
+* [Laravel](https://laravel.com/) - The PHP framework used
+
+
+## Official Documentation
+
+Documentation for the entire framework can be found on the [Laravel website](http://laravel.com/docs).
+
+## Versioning
+
+I used [GitKraken](https://www.gitkraken.com/b) and [Git](https://git-scm.com/) for versioning.
+
+## Author
+
+<a href="https://github.com/XDayonline" target="_blank">**Gianni Scantamburlo**</a> 
+
+[![FVCproductions](https://avatars0.githubusercontent.com/u/32893447?&s=200)](https://github.com/XDayonline)
+    
+<a href="http://github.com/fvcproductions" target="_blank">`https://github.com/XDayonline`</a> 
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org)
+
+- **[MIT license](http://opensource.org/licenses/mit-license.php)**
+- Copyright 2020 © Gianni Scantamburlo
