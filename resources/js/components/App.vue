@@ -1,6 +1,6 @@
 <template>
     <div id="app">
-        <Tinder ref="tinder" key-name="id" :queue.sync="queue" :offset-y="10" @submit="onSubmit">
+        <Tinder ref="tinder" key-name="id" :queue.sync="queue" :offset-y="10" @submit="onSubmit" :questions="questions" v-for="question in questions.data" :key="question.id">
             <template slot-scope="scope">
                 <div
                     class="pic question"
@@ -8,10 +8,19 @@
             'background-image': `url(https://cn.bing.com//th?id=OHR.${scope.data.id}_UHD.jpg&pid=hp&w=720&h=1280&rs=1&c=4&r=0)`
           }"
                 >
-                    <div>{{ questions.data[0].ask }}</div>
-                    <div class="answer">
-                        <div class="answer1">{{ questions.data[0].answer1 }}</div>
-                        <div class="answer2">{{ questions.data[0].answer2 }}</div>
+<!--                    <div>-->
+<!--                        <div>Tu préfères manger</div>-->
+<!--                        <div class="answer">-->
+<!--                            <div class="answer1">Des saucisses</div>-->
+<!--                            <div class="answer2">Des quenelles</div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                    <div>
+                        <div>{{ question.ask }}</div>
+                        <div class="answer">
+                            <div class="answer1">{{ question.answer1 }}</div>
+                            <div class="answer2">{{ question.answer2 }}</div>
+                        </div>
                     </div>
                 </div>
             </template>
@@ -24,7 +33,8 @@
             <img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/NYCS-bull-trans-1.svg/1200px-NYCS-bull-trans-1.svg.png"
                 @click="decide('nope')">
-            <img src="https://uploads.codesandbox.io/uploads/user/992079af-4d21-44ac-8853-43908c0d9b78/BBOG-rewind.png" @click="decide('rewind')">
+            <img src="https://uploads.codesandbox.io/uploads/user/992079af-4d21-44ac-8853-43908c0d9b78/BBOG-rewind.png"
+                 @click="decide('rewind')">
             <img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/NYCS-bull-trans-2.svg/1200px-NYCS-bull-trans-2.svg.png"
                 @click="decide('like')">
@@ -42,10 +52,20 @@
         data: () => ({
             queue: [],
             offset: 0,
-            history: []
+            history: [],
+            questions: []
         }),
         created() {
             this.mock();
+            var vm = this;
+            // Fetch our array of posts from an API
+            fetch("http://choicegianni.herokuapp.com/api/v1/question")
+                .then(function(response) {
+                    return response.json();
+                })
+                .then(function(data) {
+                    vm.questions = data;
+                });
         },
         methods: {
             mock(count = 5, append = true) {
@@ -60,7 +80,22 @@
                     this.queue.unshift(...list);
                 }
             },
-            onSubmit(type, key, item) {
+            onSubmit(choice,question_id) {
+                console.log(choice);
+                console.log(question_id);
+                if (choice.type === 'like') {
+                    axios.post("http://choicegianni.herokuapp.com/api/v1/answer", {
+                        question_id: 1,
+                        answer: 2,
+                    });
+                    console.log('like');
+                } else if (choice.type === 'nope') {
+                    axios.post("http://choicegianni.herokuapp.com/api/v1/answer", {
+                        question_id: 1,
+                        answer: 1,
+                    });
+                    console.log('nope');
+                }
                 // type: result，'like': swipe right, 'nope': swipe left, 'super': swipe up
                 // key:  The keyName of the removed card
                 // item: Child object in queue
@@ -73,16 +108,16 @@
                     location.reload();
                     // window.open("https://github.com/XDayonline/Choice");
                 } else if (choice === "nope") {
-                    axios.post("http://choicegianni.herokuapp.com/api/v1/answer",{
-                        question_id : 1,
-                        answer : 1,
+                    axios.post("http://choicegianni.herokuapp.com/api/v1/answer", {
+                        question_id: 1,
+                        answer: 1,
                     });
                     this.$refs.tinder.decide(choice);
                     console.log("1");
                 } else if (choice === "like") {
-                    axios.post("http://choicegianni.herokuapp.com/api/v1/answer",{
-                        question_id : 1,
-                        answer : 2,
+                    axios.post("http://choicegianni.herokuapp.com/api/v1/answer", {
+                        question_id: 1,
+                        answer: 2,
                     });
                     this.$refs.tinder.decide(choice);
                     console.log("2");
@@ -91,9 +126,9 @@
                 }
             }
         },
-        props: {
-            questions: Object,
-        }
+        // props: {
+        //     questions: Object,
+        // }
     };
 </script>
 
@@ -157,7 +192,7 @@
         text-shadow: black 0.1em 0.1em 0.2em;
     }
 
-    .answer{
+    .answer {
         display: flex;
         justify-content: space-evenly;
         width: inherit;
@@ -165,12 +200,12 @@
         font-weight: 600;
     }
 
-    .answer1{
-        color:#fff700;
+    .answer1 {
+        color: #fff700;
     }
 
-    .answer2{
-        color:black;
+    .answer2 {
+        color: black;
     }
 
     .btns {

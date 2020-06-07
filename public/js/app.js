@@ -1965,6 +1965,16 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1976,11 +1986,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     return {
       queue: [],
       offset: 0,
-      history: []
+      history: [],
+      questions: []
     };
   },
   created: function created() {
     this.mock();
+    var vm = this; // Fetch our array of posts from an API
+
+    fetch("http://choicegianni.herokuapp.com/api/v1/question").then(function (response) {
+      return response.json();
+    }).then(function (data) {
+      vm.questions = data;
+    });
   },
   methods: {
     mock: function mock() {
@@ -2003,10 +2021,27 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         (_this$queue = this.queue).unshift.apply(_this$queue, list);
       }
     },
-    onSubmit: function onSubmit(type, key, item) {
-      // type: result，'like': swipe right, 'nope': swipe left, 'super': swipe up
+    onSubmit: function onSubmit(choice, question_id) {
+      console.log(choice);
+      console.log(question_id);
+
+      if (choice.type === 'like') {
+        axios.post("http://choicegianni.herokuapp.com/api/v1/answer", {
+          question_id: 1,
+          answer: 2
+        });
+        console.log('like');
+      } else if (choice.type === 'nope') {
+        axios.post("http://choicegianni.herokuapp.com/api/v1/answer", {
+          question_id: 1,
+          answer: 1
+        });
+        console.log('nope');
+      } // type: result，'like': swipe right, 'nope': swipe left, 'super': swipe up
       // key:  The keyName of the removed card
       // item: Child object in queue
+
+
       if (this.queue.length < 3) {
         this.mock();
       }
@@ -2051,10 +2086,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee);
       }))();
     }
-  },
-  props: {
-    questions: Object
-  }
+  } // props: {
+  //     questions: Object,
+  // }
+
 });
 
 /***/ }),
@@ -6640,7 +6675,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nhtml,\nbody {\n    height: 100%;\n}\nbody {\n    margin: 0;\n    background-color: #20262e;\n    overflow: hidden;\n}\n#app .vue-tinder {\n    position: absolute;\n    z-index: 1;\n    left: 0;\n    right: 0;\n    top: 23px;\n    margin: auto;\n    width: calc(100% - 20px);\n    height: calc(100% - 23px - 65px - 47px - 16px);\n    min-width: 300px;\n    max-width: 355px;\n}\n.nope-pointer,\n.like-pointer {\n    position: absolute;\n    z-index: 1;\n    top: 20px;\n    width: 64px;\n    height: 64px;\n}\n.nope-pointer {\n    right: 10px;\n}\n.like-pointer {\n    left: 10px;\n}\n.pic {\n    width: 100%;\n    height: 100%;\n    background-size: cover;\n    background-position: center;\n}\n.question {\n    font-size: 2.5em;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-direction: column;\n    text-align: center;\n    color: white;\n    text-shadow: black 0.1em 0.1em 0.2em;\n}\n.answer{\n    display: flex;\n    justify-content: space-evenly;\n    width: inherit;\n    font-size: 30px;\n    font-weight: 600;\n}\n.answer1{\n    color:#fff700;\n}\n.answer2{\n    color:black;\n}\n.btns {\n    position: absolute;\n    left: 0;\n    right: 0;\n    bottom: 30px;\n    margin: auto;\n    height: 65px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    min-width: 300px;\n    max-width: 355px;\n}\n.btns img {\n    margin-right: 12px;\n    box-shadow: 0 4px 9px rgba(0, 0, 0, 0.15);\n    border-radius: 50%;\n    cursor: pointer;\n    -webkit-tap-highlight-color: transparent;\n}\n.btns img:nth-child(2n + 1) {\n    width: 68px;\n}\n.btns img:nth-child(2n) {\n    width: 50px;\n}\n.btns img:nth-last-child(1) {\n    margin-right: 0;\n}\n", ""]);
+exports.push([module.i, "\nhtml,\nbody {\n    height: 100%;\n}\nbody {\n    margin: 0;\n    background-color: #20262e;\n    overflow: hidden;\n}\n#app .vue-tinder {\n    position: absolute;\n    z-index: 1;\n    left: 0;\n    right: 0;\n    top: 23px;\n    margin: auto;\n    width: calc(100% - 20px);\n    height: calc(100% - 23px - 65px - 47px - 16px);\n    min-width: 300px;\n    max-width: 355px;\n}\n.nope-pointer,\n.like-pointer {\n    position: absolute;\n    z-index: 1;\n    top: 20px;\n    width: 64px;\n    height: 64px;\n}\n.nope-pointer {\n    right: 10px;\n}\n.like-pointer {\n    left: 10px;\n}\n.pic {\n    width: 100%;\n    height: 100%;\n    background-size: cover;\n    background-position: center;\n}\n.question {\n    font-size: 2.5em;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-direction: column;\n    text-align: center;\n    color: white;\n    text-shadow: black 0.1em 0.1em 0.2em;\n}\n.answer {\n    display: flex;\n    justify-content: space-evenly;\n    width: inherit;\n    font-size: 30px;\n    font-weight: 600;\n}\n.answer1 {\n    color: #fff700;\n}\n.answer2 {\n    color: black;\n}\n.btns {\n    position: absolute;\n    left: 0;\n    right: 0;\n    bottom: 30px;\n    margin: auto;\n    height: 65px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    min-width: 300px;\n    max-width: 355px;\n}\n.btns img {\n    margin-right: 12px;\n    box-shadow: 0 4px 9px rgba(0, 0, 0, 0.15);\n    border-radius: 50%;\n    cursor: pointer;\n    -webkit-tap-highlight-color: transparent;\n}\n.btns img:nth-child(2n + 1) {\n    width: 68px;\n}\n.btns img:nth-child(2n) {\n    width: 50px;\n}\n.btns img:nth-last-child(1) {\n    margin-right: 0;\n}\n", ""]);
 
 // exports
 
@@ -44177,75 +44212,90 @@ var render = function() {
     "div",
     { attrs: { id: "app" } },
     [
-      _c(
-        "Tinder",
-        {
-          ref: "tinder",
-          attrs: { "key-name": "id", queue: _vm.queue, "offset-y": 10 },
-          on: {
-            "update:queue": function($event) {
-              _vm.queue = $event
+      _vm._l(_vm.questions.data, function(question) {
+        return _c(
+          "Tinder",
+          {
+            key: question.id,
+            ref: "tinder",
+            refInFor: true,
+            attrs: {
+              "key-name": "id",
+              queue: _vm.queue,
+              "offset-y": 10,
+              questions: _vm.questions
             },
-            submit: _vm.onSubmit
-          },
-          scopedSlots: _vm._u([
-            {
-              key: "default",
-              fn: function(scope) {
-                return [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "pic question",
-                      style: {
-                        "background-image":
-                          "url(https://cn.bing.com//th?id=OHR." +
-                          scope.data.id +
-                          "_UHD.jpg&pid=hp&w=720&h=1280&rs=1&c=4&r=0)"
-                      }
-                    },
-                    [
-                      _c("div", [_vm._v(_vm._s(_vm.questions.data[0].ask))]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "answer" }, [
-                        _c("div", { staticClass: "answer1" }, [
-                          _vm._v(_vm._s(_vm.questions.data[0].answer1))
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "answer2" }, [
-                          _vm._v(_vm._s(_vm.questions.data[0].answer2))
-                        ])
-                      ])
+            on: {
+              "update:queue": function($event) {
+                _vm.queue = $event
+              },
+              submit: _vm.onSubmit
+            },
+            scopedSlots: _vm._u(
+              [
+                {
+                  key: "default",
+                  fn: function(scope) {
+                    return [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "pic question",
+                          style: {
+                            "background-image":
+                              "url(https://cn.bing.com//th?id=OHR." +
+                              scope.data.id +
+                              "_UHD.jpg&pid=hp&w=720&h=1280&rs=1&c=4&r=0)"
+                          }
+                        },
+                        [
+                          _c("div", [
+                            _c("div", [_vm._v(_vm._s(question.ask))]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "answer" }, [
+                              _c("div", { staticClass: "answer1" }, [
+                                _vm._v(_vm._s(question.answer1))
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "answer2" }, [
+                                _vm._v(_vm._s(question.answer2))
+                              ])
+                            ])
+                          ])
+                        ]
+                      )
                     ]
-                  )
-                ]
-              }
-            }
-          ])
-        },
-        [
-          _vm._v(" "),
-          _c("img", {
-            staticClass: "like-pointer",
-            attrs: {
-              slot: "like",
-              src:
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/NYCS-bull-trans-2.svg/1200px-NYCS-bull-trans-2.svg.png"
-            },
-            slot: "like"
-          }),
-          _vm._v(" "),
-          _c("img", {
-            staticClass: "nope-pointer",
-            attrs: {
-              slot: "nope",
-              src:
-                "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/NYCS-bull-trans-1.svg/1200px-NYCS-bull-trans-1.svg.png"
-            },
-            slot: "nope"
-          })
-        ]
-      ),
+                  }
+                }
+              ],
+              null,
+              true
+            )
+          },
+          [
+            _vm._v(" "),
+            _c("img", {
+              staticClass: "like-pointer",
+              attrs: {
+                slot: "like",
+                src:
+                  "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/NYCS-bull-trans-2.svg/1200px-NYCS-bull-trans-2.svg.png"
+              },
+              slot: "like"
+            }),
+            _vm._v(" "),
+            _c("img", {
+              staticClass: "nope-pointer",
+              attrs: {
+                slot: "nope",
+                src:
+                  "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/NYCS-bull-trans-1.svg/1200px-NYCS-bull-trans-1.svg.png"
+              },
+              slot: "nope"
+            })
+          ]
+        )
+      }),
       _vm._v(" "),
       _c("div", { staticClass: "btns" }, [
         _c("img", {
@@ -44285,7 +44335,7 @@ var render = function() {
         })
       ])
     ],
-    1
+    2
   )
 }
 var staticRenderFns = []
@@ -56739,7 +56789,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2___default.a({
     // can access it inside the promise function
     var vm = this; // Fetch our array of posts from an API
 
-    fetch("api/v1/question").then(function (response) {
+    fetch("http://choicegianni.herokuapp.com/api/v1/question").then(function (response) {
       return response.json();
     }).then(function (data) {
       vm.questions = data;

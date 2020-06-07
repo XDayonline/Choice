@@ -46,7 +46,7 @@ const app = new Vue({
         // can access it inside the promise function
         var vm = this;
         // Fetch our array of posts from an API
-        fetch("api/v1/question")
+        fetch("http://choicegianni.herokuapp.com/api/v1/question")
             .then(function(response) {
                 return response.json();
             })
