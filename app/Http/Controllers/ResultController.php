@@ -67,7 +67,7 @@ class ResultController extends Controller
         $display_percentage_of_answer2 = $percentage_of_answer2." %";
 
         $result = Result::create([
-            'question_id'=> 1,
+            'question_id'=> $request->input('question_id'),
             'nb_of_answer1'=> $nb_of_answer1,
             'nb_of_answer2'=> $nb_of_answer2,
             '$percentage_of_answer1'=> $display_percentage_of_answer1,
