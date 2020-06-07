@@ -38,8 +38,8 @@ export default {
 
 const app = new Vue({
     el: '#app',
-    components: { App },
-    template: "<App/>",
+    // components: { App },
+    // template: "<App/>",
     data: {questions: []},
     created: function() {
         // Alias the component instance as `vm`, so that we

@@ -8,11 +8,10 @@
             'background-image': `url(https://cn.bing.com//th?id=OHR.${scope.data.id}_UHD.jpg&pid=hp&w=720&h=1280&rs=1&c=4&r=0)`
           }"
                 >
-                    <div>Tu préfères sortir avec</div>
-<!--                    <div>{{questions}}</div>-->
+                    <div>{{ questions.data[0].ask }}</div>
                     <div class="answer">
-                        <div class="answer1">une fille</div>
-                        <div class="answer2">un garçon</div>
+                        <div class="answer1">{{ questions.data[0].answer1 }}</div>
+                        <div class="answer2">{{ questions.data[0].answer2 }}</div>
                     </div>
                 </div>
             </template>
@@ -25,8 +24,7 @@
             <img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/NYCS-bull-trans-1.svg/1200px-NYCS-bull-trans-1.svg.png"
                 @click="decide('nope')">
-            <img src="https://uploads.codesandbox.io/uploads/user/992079af-4d21-44ac-8853-43908c0d9b78/LjHi-help.png"
-                 @click="decide('help')">
+            <img src="https://uploads.codesandbox.io/uploads/user/992079af-4d21-44ac-8853-43908c0d9b78/BBOG-rewind.png" @click="decide('rewind')">
             <img
                 src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/NYCS-bull-trans-2.svg/1200px-NYCS-bull-trans-2.svg.png"
                 @click="decide('like')">
@@ -62,19 +60,30 @@
                     this.queue.unshift(...list);
                 }
             },
-            onSubmit({item}) {
+            onSubmit(type, key, item) {
+                // type: result，'like': swipe right, 'nope': swipe left, 'super': swipe up
+                // key:  The keyName of the removed card
+                // item: Child object in queue
                 if (this.queue.length < 3) {
-                    this.mock();
+                    this.mock()
                 }
-                this.history.push(item);
             },
             async decide(choice) {
-                if (choice === "help") {
-                    window.open("https://github.com/XDayonline/Choice");
+                if (choice === "rewind") {
+                    location.reload();
+                    // window.open("https://github.com/XDayonline/Choice");
                 } else if (choice === "nope") {
+                    axios.post("http://choicegianni.herokuapp.com/api/v1/answer",{
+                        question_id : 1,
+                        answer : 1,
+                    });
                     this.$refs.tinder.decide(choice);
                     console.log("1");
                 } else if (choice === "like") {
+                    axios.post("http://choicegianni.herokuapp.com/api/v1/answer",{
+                        question_id : 1,
+                        answer : 2,
+                    });
                     this.$refs.tinder.decide(choice);
                     console.log("2");
                 } else {
@@ -83,7 +92,7 @@
             }
         },
         props: {
-            questions: Object
+            questions: Object,
         }
     };
 </script>
@@ -138,7 +147,7 @@
     }
 
     .question {
-        font-size: 3em;
+        font-size: 2.5em;
         display: flex;
         justify-content: center;
         align-items: center;

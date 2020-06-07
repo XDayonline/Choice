@@ -1965,8 +1965,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2005,14 +2003,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         (_this$queue = this.queue).unshift.apply(_this$queue, list);
       }
     },
-    onSubmit: function onSubmit(_ref) {
-      var item = _ref.item;
-
+    onSubmit: function onSubmit(type, key, item) {
+      // type: result，'like': swipe right, 'nope': swipe left, 'super': swipe up
+      // key:  The keyName of the removed card
+      // item: Child object in queue
       if (this.queue.length < 3) {
         this.mock();
       }
-
-      this.history.push(item);
     },
     decide: function decide(choice) {
       var _this = this;
@@ -2022,13 +2019,23 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                if (choice === "help") {
-                  window.open("https://github.com/XDayonline/Choice");
+                if (choice === "rewind") {
+                  location.reload(); // window.open("https://github.com/XDayonline/Choice");
                 } else if (choice === "nope") {
+                  axios.post("http://choicegianni.herokuapp.com/api/v1/answer", {
+                    question_id: 1,
+                    answer: 1
+                  });
+
                   _this.$refs.tinder.decide(choice);
 
                   console.log("1");
                 } else if (choice === "like") {
+                  axios.post("http://choicegianni.herokuapp.com/api/v1/answer", {
+                    question_id: 1,
+                    answer: 2
+                  });
+
                   _this.$refs.tinder.decide(choice);
 
                   console.log("2");
@@ -6633,7 +6640,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nhtml,\nbody {\n    height: 100%;\n}\nbody {\n    margin: 0;\n    background-color: #20262e;\n    overflow: hidden;\n}\n#app .vue-tinder {\n    position: absolute;\n    z-index: 1;\n    left: 0;\n    right: 0;\n    top: 23px;\n    margin: auto;\n    width: calc(100% - 20px);\n    height: calc(100% - 23px - 65px - 47px - 16px);\n    min-width: 300px;\n    max-width: 355px;\n}\n.nope-pointer,\n.like-pointer {\n    position: absolute;\n    z-index: 1;\n    top: 20px;\n    width: 64px;\n    height: 64px;\n}\n.nope-pointer {\n    right: 10px;\n}\n.like-pointer {\n    left: 10px;\n}\n.pic {\n    width: 100%;\n    height: 100%;\n    background-size: cover;\n    background-position: center;\n}\n.question {\n    font-size: 3em;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-direction: column;\n    text-align: center;\n    color: white;\n    text-shadow: black 0.1em 0.1em 0.2em;\n}\n.answer{\n    display: flex;\n    justify-content: space-evenly;\n    width: inherit;\n    font-size: 30px;\n    font-weight: 600;\n}\n.answer1{\n    color:#fff700;\n}\n.answer2{\n    color:black;\n}\n.btns {\n    position: absolute;\n    left: 0;\n    right: 0;\n    bottom: 30px;\n    margin: auto;\n    height: 65px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    min-width: 300px;\n    max-width: 355px;\n}\n.btns img {\n    margin-right: 12px;\n    box-shadow: 0 4px 9px rgba(0, 0, 0, 0.15);\n    border-radius: 50%;\n    cursor: pointer;\n    -webkit-tap-highlight-color: transparent;\n}\n.btns img:nth-child(2n + 1) {\n    width: 68px;\n}\n.btns img:nth-child(2n) {\n    width: 50px;\n}\n.btns img:nth-last-child(1) {\n    margin-right: 0;\n}\n", ""]);
+exports.push([module.i, "\nhtml,\nbody {\n    height: 100%;\n}\nbody {\n    margin: 0;\n    background-color: #20262e;\n    overflow: hidden;\n}\n#app .vue-tinder {\n    position: absolute;\n    z-index: 1;\n    left: 0;\n    right: 0;\n    top: 23px;\n    margin: auto;\n    width: calc(100% - 20px);\n    height: calc(100% - 23px - 65px - 47px - 16px);\n    min-width: 300px;\n    max-width: 355px;\n}\n.nope-pointer,\n.like-pointer {\n    position: absolute;\n    z-index: 1;\n    top: 20px;\n    width: 64px;\n    height: 64px;\n}\n.nope-pointer {\n    right: 10px;\n}\n.like-pointer {\n    left: 10px;\n}\n.pic {\n    width: 100%;\n    height: 100%;\n    background-size: cover;\n    background-position: center;\n}\n.question {\n    font-size: 2.5em;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-direction: column;\n    text-align: center;\n    color: white;\n    text-shadow: black 0.1em 0.1em 0.2em;\n}\n.answer{\n    display: flex;\n    justify-content: space-evenly;\n    width: inherit;\n    font-size: 30px;\n    font-weight: 600;\n}\n.answer1{\n    color:#fff700;\n}\n.answer2{\n    color:black;\n}\n.btns {\n    position: absolute;\n    left: 0;\n    right: 0;\n    bottom: 30px;\n    margin: auto;\n    height: 65px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    min-width: 300px;\n    max-width: 355px;\n}\n.btns img {\n    margin-right: 12px;\n    box-shadow: 0 4px 9px rgba(0, 0, 0, 0.15);\n    border-radius: 50%;\n    cursor: pointer;\n    -webkit-tap-highlight-color: transparent;\n}\n.btns img:nth-child(2n + 1) {\n    width: 68px;\n}\n.btns img:nth-child(2n) {\n    width: 50px;\n}\n.btns img:nth-last-child(1) {\n    margin-right: 0;\n}\n", ""]);
 
 // exports
 
@@ -44198,15 +44205,15 @@ var render = function() {
                       }
                     },
                     [
-                      _c("div", [_vm._v("Tu préfères sortir avec")]),
+                      _c("div", [_vm._v(_vm._s(_vm.questions.data[0].ask))]),
                       _vm._v(" "),
                       _c("div", { staticClass: "answer" }, [
                         _c("div", { staticClass: "answer1" }, [
-                          _vm._v("une fille")
+                          _vm._v(_vm._s(_vm.questions.data[0].answer1))
                         ]),
                         _vm._v(" "),
                         _c("div", { staticClass: "answer2" }, [
-                          _vm._v("un garçon")
+                          _vm._v(_vm._s(_vm.questions.data[0].answer2))
                         ])
                       ])
                     ]
@@ -44256,11 +44263,11 @@ var render = function() {
         _c("img", {
           attrs: {
             src:
-              "https://uploads.codesandbox.io/uploads/user/992079af-4d21-44ac-8853-43908c0d9b78/LjHi-help.png"
+              "https://uploads.codesandbox.io/uploads/user/992079af-4d21-44ac-8853-43908c0d9b78/BBOG-rewind.png"
           },
           on: {
             click: function($event) {
-              return _vm.decide("help")
+              return _vm.decide("rewind")
             }
           }
         }),
@@ -56722,10 +56729,8 @@ vue__WEBPACK_IMPORTED_MODULE_2___default.a.component('app', __webpack_require__(
 });
 var app = new vue__WEBPACK_IMPORTED_MODULE_2___default.a({
   el: '#app',
-  components: {
-    App: _components_App__WEBPACK_IMPORTED_MODULE_0__["default"]
-  },
-  template: "<App/>",
+  // components: { App },
+  // template: "<App/>",
   data: {
     questions: []
   },
