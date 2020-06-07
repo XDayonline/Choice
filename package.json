@@ -24,8 +24,11 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "interact.js": "latest",
+        "interactjs": "^1.9.19",
         "swing": "^3.1.4",
         "vue-swing": "0.0.10",
+        "vue-tinder": "^2.0.0",
         "vue2-interact": "0.0.3"
     }
 }

@@ -6,16 +6,17 @@
                     <div class="card-header">Question</div>
 
                     <div class="card-body">
-                        <Vue2InteractDraggable
-                            @draggedRight="draggedRight"
-                            :interact-max-rotation="15"
-                            :interact-out-of-sight-x-coordinate="500"
-                            :interact-x-threshold="200"
-                        >
-                            <div>
-                                <h3>Drag me!</h3>
-                            </div>
-                        </Vue2InteractDraggable>
+<!--                        <Vue2InteractDraggable-->
+<!--                            @draggedRight="draggedRight"-->
+<!--                            :interact-max-rotation="15"-->
+<!--                            :interact-out-of-sight-x-coordinate="500"-->
+<!--                            :interact-x-threshold="200"-->
+<!--                        >-->
+<!--                            <div>-->
+<!--                                <h3>Drag me!</h3>-->
+<!--                            </div>-->
+<!--                        </Vue2InteractDraggable>-->
+
                         <vue-swing
                             @throwout="throwout"
                             @throwin="throwin"
@@ -37,7 +38,17 @@
 </template>
 
 <script>
+    import GameCardsStack from "./GameCardsStack";
     export default {
+        name: "ExampleComponent",
+        components: {
+            GameCardsStack
+        },
+        data() {
+            return {
+                visibleCards: ["Test", "Vue.js", "Webpack"]
+            };
+        },
         mounted() {
             console.log('ExampleComponent mounted.')
         },

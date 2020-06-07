@@ -4,6 +4,8 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import App from "./components/App";
+
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -24,7 +26,9 @@ import { Vue2InteractDraggable } from 'vue2-interact'
 
 Vue.component('vue-swing', VueSwing);
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
+Vue.component('gamecard', require('./components/Gamecard.vue').default);
+Vue.component('gamecards-stack', require('./components/GameCardsStack.vue').default);
+Vue.component('app', require('./components/App.vue').default);
 
 export default {
     components: {
@@ -34,6 +38,8 @@ export default {
 
 const app = new Vue({
     el: '#app',
+    // components: { App },
+    // template: "<App/>",
     data: {questions: []},
     created: function() {
         // Alias the component instance as `vm`, so that we
