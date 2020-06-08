@@ -7,7 +7,7 @@
                      class="pic question"
                      :style="{
             // 'background-image': `url(https://cn.bing.com//th?id=OHR.${scope.data.id}_UHD.jpg&pid=hp&w=720&h=1280&rs=1&c=4&r=0)`
-            'background-image': `url(https://lh3.googleusercontent.com/VrPzQ6Z3XK7oDcKn51AbKRAs_4U1wybryBOX62YhXXo3hVQLK9fujO_NtZ2hqUDs8e6KYicmew=w640-h400-e365)`
+            'background-image': `url(https://www.xmple.com/wallpaper/red-gradient-blue-linear-1800x3200-c2-0000cd-ff0000-a-0-f-14.svg)`
           }"
                 >
                     <!--                    <div>-->
@@ -23,10 +23,10 @@
                     <!--                            <div class="answer1">{{ question.answer1 }}</div>-->
                     <!--                            <div class="answer2">{{ question.answer2 }}</div>-->
                     <!--                        </div>-->
-                    <div>{{questions.data[scope.data.id].ask || "The Hobbit"}}</div>
+                    <div v-if="questions.data[scope.data.id] != null">{{questions.data[scope.data.id].ask}}</div>
                     <div class="answer">
-                        <div class="answer1">{{questions.data[scope.data.id].answer1}}</div>
-                        <div class="answer2">{{questions.data[scope.data.id].answer2}}</div>
+                        <div class="answer1" v-if="questions.data[scope.data.id] != null">{{questions.data[scope.data.id].answer1}}</div>
+                        <div class="answer2" v-if="questions.data[scope.data.id] != null">{{questions.data[scope.data.id].answer2}}</div>
                     </div>
                 </div>
             </template>
@@ -121,7 +121,7 @@
                 }
             },
             async decide(choice) {
-                console.log(choice);
+                console.log(this);
                 if (choice === "rewind") {
                     location.reload();
                     // window.open("https://github.com/XDayonline/Choice");
@@ -221,11 +221,11 @@
     }
 
     .answer1 {
-        color: #fff700;
+        color: #007eff;
     }
 
     .answer2 {
-        color: black;
+        color: red;
     }
 
     .btns {

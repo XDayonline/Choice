@@ -2067,7 +2067,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                console.log(choice);
+                console.log(_this);
 
                 if (choice === "rewind") {
                   location.reload(); // window.open("https://github.com/XDayonline/Choice");
@@ -6553,7 +6553,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\nhtml,\nbody {\n    height: 100%;\n}\nbody {\n    margin: 0;\n    background-color: #20262e;\n    overflow: hidden;\n}\n#app .vue-tinder {\n    position: absolute;\n    z-index: 1;\n    left: 0;\n    right: 0;\n    top: 23px;\n    margin: auto;\n    width: calc(100% - 20px);\n    height: calc(100% - 23px - 65px - 47px - 16px);\n    min-width: 300px;\n    max-width: 355px;\n}\n.nope-pointer,\n.like-pointer {\n    position: absolute;\n    z-index: 1;\n    top: 20px;\n    width: 64px;\n    height: 64px;\n}\n.nope-pointer {\n    right: 10px;\n}\n.like-pointer {\n    left: 10px;\n}\n.pic {\n    width: 100%;\n    height: 100%;\n    background-size: cover;\n    background-position: center;\n}\n.question {\n    font-size: 2.5em;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-direction: column;\n    text-align: center;\n    color: white;\n    text-shadow: black 0.1em 0.1em 0.2em;\n}\n.answer {\n    display: flex;\n    justify-content: space-evenly;\n    width: inherit;\n    font-size: 30px;\n    font-weight: 600;\n}\n.answer1 {\n    color: #fff700;\n}\n.answer2 {\n    color: black;\n}\n.btns {\n    position: absolute;\n    left: 0;\n    right: 0;\n    bottom: 30px;\n    margin: auto;\n    height: 65px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    min-width: 300px;\n    max-width: 355px;\n}\n.btns img {\n    margin-right: 12px;\n    box-shadow: 0 4px 9px rgba(0, 0, 0, 0.15);\n    border-radius: 50%;\n    cursor: pointer;\n    -webkit-tap-highlight-color: transparent;\n}\n.btns img:nth-child(2n + 1) {\n    width: 68px;\n}\n.btns img:nth-child(2n) {\n    width: 50px;\n}\n.btns img:nth-last-child(1) {\n    margin-right: 0;\n}\n", ""]);
+exports.push([module.i, "\nhtml,\nbody {\n    height: 100%;\n}\nbody {\n    margin: 0;\n    background-color: #20262e;\n    overflow: hidden;\n}\n#app .vue-tinder {\n    position: absolute;\n    z-index: 1;\n    left: 0;\n    right: 0;\n    top: 23px;\n    margin: auto;\n    width: calc(100% - 20px);\n    height: calc(100% - 23px - 65px - 47px - 16px);\n    min-width: 300px;\n    max-width: 355px;\n}\n.nope-pointer,\n.like-pointer {\n    position: absolute;\n    z-index: 1;\n    top: 20px;\n    width: 64px;\n    height: 64px;\n}\n.nope-pointer {\n    right: 10px;\n}\n.like-pointer {\n    left: 10px;\n}\n.pic {\n    width: 100%;\n    height: 100%;\n    background-size: cover;\n    background-position: center;\n}\n.question {\n    font-size: 2.5em;\n    display: flex;\n    justify-content: center;\n    align-items: center;\n    flex-direction: column;\n    text-align: center;\n    color: white;\n    text-shadow: black 0.1em 0.1em 0.2em;\n}\n.answer {\n    display: flex;\n    justify-content: space-evenly;\n    width: inherit;\n    font-size: 30px;\n    font-weight: 600;\n}\n.answer1 {\n    color: #007eff;\n}\n.answer2 {\n    color: red;\n}\n.btns {\n    position: absolute;\n    left: 0;\n    right: 0;\n    bottom: 30px;\n    margin: auto;\n    height: 65px;\n    display: flex;\n    align-items: center;\n    justify-content: center;\n    min-width: 300px;\n    max-width: 355px;\n}\n.btns img {\n    margin-right: 12px;\n    box-shadow: 0 4px 9px rgba(0, 0, 0, 0.15);\n    border-radius: 50%;\n    cursor: pointer;\n    -webkit-tap-highlight-color: transparent;\n}\n.btns img:nth-child(2n + 1) {\n    width: 68px;\n}\n.btns img:nth-child(2n) {\n    width: 50px;\n}\n.btns img:nth-last-child(1) {\n    margin-right: 0;\n}\n", ""]);
 
 // exports
 
@@ -39072,31 +39072,38 @@ var render = function() {
                       style: {
                         // 'background-image': `url(https://cn.bing.com//th?id=OHR.${scope.data.id}_UHD.jpg&pid=hp&w=720&h=1280&rs=1&c=4&r=0)`
                         "background-image":
-                          "url(https://lh3.googleusercontent.com/VrPzQ6Z3XK7oDcKn51AbKRAs_4U1wybryBOX62YhXXo3hVQLK9fujO_NtZ2hqUDs8e6KYicmew=w640-h400-e365)"
+                          "url(https://www.xmple.com/wallpaper/red-gradient-blue-linear-1800x3200-c2-0000cd-ff0000-a-0-f-14.svg)"
                       }
                     },
                     [
-                      _c("div", [
-                        _vm._v(
-                          _vm._s(
-                            _vm.questions.data[scope.data.id].ask ||
-                              "The Hobbit"
-                          )
-                        )
-                      ]),
+                      _vm.questions.data[scope.data.id] != null
+                        ? _c("div", [
+                            _vm._v(
+                              _vm._s(_vm.questions.data[scope.data.id].ask)
+                            )
+                          ])
+                        : _vm._e(),
                       _vm._v(" "),
                       _c("div", { staticClass: "answer" }, [
-                        _c("div", { staticClass: "answer1" }, [
-                          _vm._v(
-                            _vm._s(_vm.questions.data[scope.data.id].answer1)
-                          )
-                        ]),
+                        _vm.questions.data[scope.data.id] != null
+                          ? _c("div", { staticClass: "answer1" }, [
+                              _vm._v(
+                                _vm._s(
+                                  _vm.questions.data[scope.data.id].answer1
+                                )
+                              )
+                            ])
+                          : _vm._e(),
                         _vm._v(" "),
-                        _c("div", { staticClass: "answer2" }, [
-                          _vm._v(
-                            _vm._s(_vm.questions.data[scope.data.id].answer2)
-                          )
-                        ])
+                        _vm.questions.data[scope.data.id] != null
+                          ? _c("div", { staticClass: "answer2" }, [
+                              _vm._v(
+                                _vm._s(
+                                  _vm.questions.data[scope.data.id].answer2
+                                )
+                              )
+                            ])
+                          : _vm._e()
                       ])
                     ]
                   )
