@@ -2038,15 +2038,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       if (choice.type === 'like') {
         axios.post("//choicegianni.herokuapp.com/api/v1/answer", {
-          question_id: choice.key,
-          // CHANGE ID
+          question_id: choice.key - 1,
           answer: 2
         });
         console.log('like');
       } else if (choice.type === 'nope') {
         axios.post("//choicegianni.herokuapp.com/api/v1/answer", {
-          question_id: choice.key,
-          // CHANGE ID
+          question_id: choice.key - 1,
           answer: 1
         });
         console.log('nope');
@@ -51397,21 +51395,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_1___default.a({
   components: {
     App: _components_App__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  template: "<App/>",
-  data: {
-    questions: []
-  },
-  created: function created() {
-    // Alias the component instance as `vm`, so that we
-    // can access it inside the promise function
-    var vm = this; // Fetch our array of posts from an API
-
-    fetch("//choicegianni.herokuapp.com/api/v1/question").then(function (response) {
-      return response.json();
-    }).then(function (data) {
-      vm.questions = data;
-    });
-  }
+  template: "<App/>"
 });
 
 /***/ }),

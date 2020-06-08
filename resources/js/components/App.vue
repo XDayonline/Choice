@@ -100,15 +100,13 @@
                 console.log(choice);
                 if (choice.type === 'like') {
                     axios.post("//choicegianni.herokuapp.com/api/v1/answer", {
-                        question_id: choice.key,
-                        // CHANGE ID
+                        question_id: choice.key-1,
                         answer: 2,
                     });
                     console.log('like');
                 } else if (choice.type === 'nope') {
                     axios.post("//choicegianni.herokuapp.com/api/v1/answer", {
-                        question_id: choice.key,
-                        // CHANGE ID
+                        question_id: choice.key-1,
                         answer: 1,
                     });
                     console.log('nope');

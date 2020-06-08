@@ -29,18 +29,4 @@ const app = new Vue({
     el: '#app',
     components: { App },
     template: "<App/>",
-    data: {questions: []},
-    created: function() {
-        // Alias the component instance as `vm`, so that we
-        // can access it inside the promise function
-        let vm = this;
-        // Fetch our array of posts from an API
-        fetch("//choicegianni.herokuapp.com/api/v1/question")
-            .then(function(response) {
-                return response.json();
-            })
-            .then(function(data) {
-                vm.questions = data;
-            });
-    }
 });
