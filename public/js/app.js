@@ -1975,6 +1975,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+ // import source from "../source";
+// SOURCE A CHANGER
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2021,19 +2023,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         (_this$queue = this.queue).unshift.apply(_this$queue, list);
       }
     },
-    onSubmit: function onSubmit(choice, question_id) {
-      console.log(choice);
-      console.log(question_id);
+    onSubmit: function onSubmit(choice) {
+      console.log(choice.key);
 
       if (choice.type === 'like') {
         axios.post("http://choicegianni.herokuapp.com/api/v1/answer", {
           question_id: 1,
+          // ID A CHANGER
           answer: 2
         });
         console.log('like');
       } else if (choice.type === 'nope') {
         axios.post("http://choicegianni.herokuapp.com/api/v1/answer", {
           question_id: 1,
+          // ID A CHANGER
           answer: 1
         });
         console.log('nope');
@@ -2059,6 +2062,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 } else if (choice === "nope") {
                   axios.post("http://choicegianni.herokuapp.com/api/v1/answer", {
                     question_id: 1,
+                    // ID A CHANGER
                     answer: 1
                   });
 
@@ -2068,6 +2072,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 } else if (choice === "like") {
                   axios.post("http://choicegianni.herokuapp.com/api/v1/answer", {
                     question_id: 1,
+                    // ID A CHANGER
                     answer: 2
                   });
 
@@ -44212,90 +44217,83 @@ var render = function() {
     "div",
     { attrs: { id: "app" } },
     [
-      _vm._l(_vm.questions.data, function(question) {
-        return _c(
-          "Tinder",
-          {
-            key: question.id,
-            ref: "tinder",
-            refInFor: true,
-            attrs: {
-              "key-name": "id",
-              queue: _vm.queue,
-              "offset-y": 10,
-              questions: _vm.questions
-            },
-            on: {
-              "update:queue": function($event) {
-                _vm.queue = $event
-              },
-              submit: _vm.onSubmit
-            },
-            scopedSlots: _vm._u(
-              [
-                {
-                  key: "default",
-                  fn: function(scope) {
-                    return [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "pic question",
-                          style: {
-                            "background-image":
-                              "url(https://cn.bing.com//th?id=OHR." +
-                              scope.data.id +
-                              "_UHD.jpg&pid=hp&w=720&h=1280&rs=1&c=4&r=0)"
-                          }
-                        },
-                        [
-                          _c("div", [
-                            _c("div", [_vm._v(_vm._s(question.ask))]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "answer" }, [
-                              _c("div", { staticClass: "answer1" }, [
-                                _vm._v(_vm._s(question.answer1))
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "answer2" }, [
-                                _vm._v(_vm._s(question.answer2))
-                              ])
-                            ])
-                          ])
-                        ]
-                      )
-                    ]
-                  }
-                }
-              ],
-              null,
-              true
-            )
+      _c(
+        "Tinder",
+        {
+          ref: "tinder",
+          attrs: {
+            "key-name": "id",
+            queue: _vm.queue,
+            "offset-y": 10,
+            questions: _vm.questions
           },
-          [
-            _vm._v(" "),
-            _c("img", {
-              staticClass: "like-pointer",
-              attrs: {
-                slot: "like",
-                src:
-                  "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/NYCS-bull-trans-2.svg/1200px-NYCS-bull-trans-2.svg.png"
-              },
-              slot: "like"
-            }),
-            _vm._v(" "),
-            _c("img", {
-              staticClass: "nope-pointer",
-              attrs: {
-                slot: "nope",
-                src:
-                  "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/NYCS-bull-trans-1.svg/1200px-NYCS-bull-trans-1.svg.png"
-              },
-              slot: "nope"
-            })
-          ]
-        )
-      }),
+          on: {
+            "update:queue": function($event) {
+              _vm.queue = $event
+            },
+            submit: _vm.onSubmit
+          },
+          scopedSlots: _vm._u([
+            {
+              key: "default",
+              fn: function(scope) {
+                return _vm._l(_vm.questions.data, function(question) {
+                  return _c(
+                    "div",
+                    {
+                      key: question.id,
+                      staticClass: "pic question",
+                      style: {
+                        "background-image":
+                          "url(https://cn.bing.com//th?id=OHR." +
+                          scope.data.id +
+                          "_UHD.jpg&pid=hp&w=720&h=1280&rs=1&c=4&r=0)"
+                      }
+                    },
+                    [
+                      _c("div", [
+                        _c("div", [_vm._v(_vm._s(question.ask))]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "answer" }, [
+                          _c("div", { staticClass: "answer1" }, [
+                            _vm._v(_vm._s(question.answer1))
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "answer2" }, [
+                            _vm._v(_vm._s(question.answer2))
+                          ])
+                        ])
+                      ])
+                    ]
+                  )
+                })
+              }
+            }
+          ])
+        },
+        [
+          _vm._v(" "),
+          _c("img", {
+            staticClass: "like-pointer",
+            attrs: {
+              slot: "like",
+              src:
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/NYCS-bull-trans-2.svg/1200px-NYCS-bull-trans-2.svg.png"
+            },
+            slot: "like"
+          }),
+          _vm._v(" "),
+          _c("img", {
+            staticClass: "nope-pointer",
+            attrs: {
+              slot: "nope",
+              src:
+                "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/NYCS-bull-trans-1.svg/1200px-NYCS-bull-trans-1.svg.png"
+            },
+            slot: "nope"
+          })
+        ]
+      ),
       _vm._v(" "),
       _c("div", { staticClass: "btns" }, [
         _c("img", {
@@ -44335,7 +44333,7 @@ var render = function() {
         })
       ])
     ],
-    2
+    1
   )
 }
 var staticRenderFns = []

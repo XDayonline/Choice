@@ -44,7 +44,7 @@ const app = new Vue({
     created: function() {
         // Alias the component instance as `vm`, so that we
         // can access it inside the promise function
-        var vm = this;
+        let vm = this;
         // Fetch our array of posts from an API
         fetch("http://choicegianni.herokuapp.com/api/v1/question")
             .then(function(response) {

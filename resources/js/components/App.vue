@@ -1,8 +1,8 @@
 <template>
     <div id="app">
-        <Tinder ref="tinder" key-name="id" :queue.sync="queue" :offset-y="10" @submit="onSubmit" :questions="questions" v-for="question in questions.data" :key="question.id">
-            <template slot-scope="scope">
-                <div
+        <Tinder ref="tinder" key-name="id" :queue.sync="queue" :offset-y="10" @submit="onSubmit" :questions="questions">
+            <template slot-scope="scope" >
+                <div  v-for="question in questions.data" :key="question.id"
                     class="pic question"
                     :style="{
             'background-image': `url(https://cn.bing.com//th?id=OHR.${scope.data.id}_UHD.jpg&pid=hp&w=720&h=1280&rs=1&c=4&r=0)`
@@ -44,6 +44,8 @@
 
 <script>
     import Tinder from "vue-tinder";
+    // import source from "../source";
+    // SOURCE A CHANGER
     import source from "../bing";
 
     export default {
@@ -57,7 +59,7 @@
         }),
         created() {
             this.mock();
-            var vm = this;
+            let vm = this;
             // Fetch our array of posts from an API
             fetch("http://choicegianni.herokuapp.com/api/v1/question")
                 .then(function(response) {
@@ -80,18 +82,19 @@
                     this.queue.unshift(...list);
                 }
             },
-            onSubmit(choice,question_id) {
-                console.log(choice);
-                console.log(question_id);
+            onSubmit(choice) {
+                console.log(choice.key);
                 if (choice.type === 'like') {
                     axios.post("http://choicegianni.herokuapp.com/api/v1/answer", {
                         question_id: 1,
+                        // ID A CHANGER
                         answer: 2,
                     });
                     console.log('like');
                 } else if (choice.type === 'nope') {
                     axios.post("http://choicegianni.herokuapp.com/api/v1/answer", {
                         question_id: 1,
+                        // ID A CHANGER
                         answer: 1,
                     });
                     console.log('nope');
@@ -110,6 +113,7 @@
                 } else if (choice === "nope") {
                     axios.post("http://choicegianni.herokuapp.com/api/v1/answer", {
                         question_id: 1,
+                        // ID A CHANGER
                         answer: 1,
                     });
                     this.$refs.tinder.decide(choice);
@@ -117,6 +121,7 @@
                 } else if (choice === "like") {
                     axios.post("http://choicegianni.herokuapp.com/api/v1/answer", {
                         question_id: 1,
+                        // ID A CHANGER
                         answer: 2,
                     });
                     this.$refs.tinder.decide(choice);
