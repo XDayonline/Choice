@@ -59,8 +59,8 @@ class ResultController extends Controller
         ]);
 
         $total_answers = Answer::all()->where('question_id','=',$request->input('question_id'))->count();
-        $nb_of_answer1 = Answer::all()->where('question_id','=',$request)->where('answer','=',1)->count();
-        $nb_of_answer2 = Answer::all()->where('question_id','=',$request)->where('answer','=',2)->count();
+        $nb_of_answer1 = Answer::all()->where('question_id','=',$request->input('question_id'))->where('answer','=',1)->count();
+        $nb_of_answer2 = Answer::all()->where('question_id','=',$request->input('question_id'))->where('answer','=',2)->count();
         $percentage_of_answer1 = ($nb_of_answer1 / $total_answers)*100;
         $display_percentage_of_answer1 = $percentage_of_answer1." %";
         $percentage_of_answer2 = ($nb_of_answer2 / $total_answers)*100;
