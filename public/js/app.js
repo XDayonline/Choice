@@ -1996,7 +1996,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     this.mock();
     var vm = this; // Fetch our array of posts from an API
 
-    fetch("http://choicegianni.herokuapp.com/api/v1/question").then(function (response) {
+    fetch("//choicegianni.herokuapp.com/api/v1/question").then(function (response) {
       return response.json();
     }).then(function (data) {
       vm.questions = data;
@@ -2027,14 +2027,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       console.log(choice.key);
 
       if (choice.type === 'like') {
-        axios.post("http://choicegianni.herokuapp.com/api/v1/answer", {
+        axios.post("//choicegianni.herokuapp.com/api/v1/answer", {
           question_id: 1,
           // ID A CHANGER
           answer: 2
         });
         console.log('like');
       } else if (choice.type === 'nope') {
-        axios.post("http://choicegianni.herokuapp.com/api/v1/answer", {
+        axios.post("//choicegianni.herokuapp.com/api/v1/answer", {
           question_id: 1,
           // ID A CHANGER
           answer: 1
@@ -2060,7 +2060,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 if (choice === "rewind") {
                   location.reload(); // window.open("https://github.com/XDayonline/Choice");
                 } else if (choice === "nope") {
-                  axios.post("http://choicegianni.herokuapp.com/api/v1/answer", {
+                  axios.post("//choicegianni.herokuapp.com/api/v1/answer", {
                     question_id: 1,
                     // ID A CHANGER
                     answer: 1
@@ -2070,7 +2070,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
                   console.log("1");
                 } else if (choice === "like") {
-                  axios.post("http://choicegianni.herokuapp.com/api/v1/answer", {
+                  axios.post("//choicegianni.herokuapp.com/api/v1/answer", {
                     question_id: 1,
                     // ID A CHANGER
                     answer: 2
@@ -56787,7 +56787,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_2___default.a({
     // can access it inside the promise function
     var vm = this; // Fetch our array of posts from an API
 
-    fetch("http://choicegianni.herokuapp.com/api/v1/question").then(function (response) {
+    fetch("//choicegianni.herokuapp.com/api/v1/question").then(function (response) {
       return response.json();
     }).then(function (data) {
       vm.questions = data;
