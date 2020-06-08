@@ -2038,13 +2038,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
       if (choice.type === 'like') {
         axios.post("//choicegianni.herokuapp.com/api/v1/answer", {
-          question_id: choice.key - 1,
+          question_id: choice.key + 1,
           answer: 2
         });
         console.log('like');
       } else if (choice.type === 'nope') {
         axios.post("//choicegianni.herokuapp.com/api/v1/answer", {
-          question_id: choice.key - 1,
+          question_id: choice.key + 1,
           answer: 1
         });
         console.log('nope');
