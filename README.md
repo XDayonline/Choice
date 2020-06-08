@@ -5,12 +5,12 @@
 <a style="justify-content: center" href="http://choicegianni.herokuapp.com/"><img src="https://img.icons8.com/plasticine/2x/survey.png" title="Choice" alt="Choice"></a>
 </p>
 <p align="center">
-<a href="https://artgback.herokuapp.com/"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://artgback.herokuapp.com/"><img src="https://img.shields.io/badge/stable-v1-blue" alt="Latest Stable Version"></a>
-<a href="https://artgback.herokuapp.com/"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
+<a href="http://choicegianni.herokuapp.com/"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
+<a href="http://choicegianni.herokuapp.com/"><img src="https://img.shields.io/badge/stable-v1-blue" alt="Latest Stable Version"></a>
+<a href="https://http://choicegianni.herokuapp.com/"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-ArtG is a survey app built with Laravel.
+Choice is a mobile web survey application built with Laravel and VueJS.
 
 ## Getting Started
 
