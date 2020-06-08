@@ -39072,7 +39072,7 @@ var render = function() {
                       style: {
                         // 'background-image': `url(https://cn.bing.com//th?id=OHR.${scope.data.id}_UHD.jpg&pid=hp&w=720&h=1280&rs=1&c=4&r=0)`
                         "background-image":
-                          "url(https://www.xmple.com/wallpaper/red-gradient-blue-linear-1800x3200-c2-0000cd-ff0000-a-0-f-14.svg)"
+                          "url(https://papers.co/wallpaper/papers.co-sk74-blue-red-blur-gradation-41-iphone-wallpaper.jpg)"
                       }
                     },
                     [
